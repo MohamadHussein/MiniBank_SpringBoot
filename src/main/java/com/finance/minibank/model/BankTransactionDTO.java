@@ -2,9 +2,8 @@ package com.finance.minibank.model;
 
 public class BankTransactionDTO {
     private Double amount;
-
     private BankTransactionType transactionType;
-    private Long accountID;
+    private Long accountId;
 
     public BankTransactionType getTransactionType() {
         return transactionType;
@@ -14,12 +13,12 @@ public class BankTransactionDTO {
         this.transactionType = transactionType;
     }
 
-    public Long getAccountID() {
-        return accountID;
+    public Long getAccountId() {
+        return accountId;
     }
 
-    public void setAccountID(Long accountID) {
-        this.accountID = accountID;
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 
     public Double getAmount() {
