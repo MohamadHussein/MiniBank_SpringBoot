@@ -23,6 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> getAllCustomers()  {
+
         List<Customer> customerList = new ArrayList<>();
         customerRepository.findAll().forEach(customerList::add);
         System.out.println(customerList.size());
@@ -31,6 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Optional<Customer> getCustomerById(Long id) {
+        System.out.println( customerRepository.findById(id).get().getTotalBalance());
         return customerRepository.findById(id);
     }
 

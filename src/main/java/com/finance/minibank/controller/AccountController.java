@@ -59,6 +59,15 @@ public class AccountController {
         }
     }
 
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<?> getByCustomerId(@PathVariable Long customerId){
+        try {
+            return new ResponseEntity<>(accountService.getAccountsByCustomerId(customerId), HttpStatus.OK);
+        }catch (Exception e){
+            return errResponse(e.getMessage(),HttpStatus.BAD_REQUEST);
+        }
+        }
+
     private ResponseEntity<?> errResponse(String msg, HttpStatus status) {
         return new ResponseEntity<>("Error Happened: " + msg, status);
     }

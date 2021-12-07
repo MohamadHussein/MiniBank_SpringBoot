@@ -48,7 +48,8 @@ public class MiniBankApplication {
             );
             BankTransaction tr3 = new BankTransaction(
                     3L,
-                    300.0,BankTransactionType.DEPOSIT
+                    300.0,
+                    BankTransactionType.DEPOSIT
 
             );
             BankTransaction tr4 = new BankTransaction(

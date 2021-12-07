@@ -8,6 +8,8 @@ import java.util.Optional;
 public interface AccountService {
     List<Account> getAllAccounts();
 
+    List<Account> getAccountsByCustomerId(Long customerId);
+
     Optional<Account> getAccountById(Long id);
 
     Account saveNewAccount(AccountDTO accountDTO);

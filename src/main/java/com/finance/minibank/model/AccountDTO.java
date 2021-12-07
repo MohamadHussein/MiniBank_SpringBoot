@@ -2,15 +2,15 @@ package com.finance.minibank.model;
 
 
 public class AccountDTO {
+    private Long customerId;
     private Double balance;
-    private Long customerID;
 
     public Long getCustomerID() {
-        return customerID;
+        return customerId;
     }
 
-    public void setCustomerID(Long customerID) {
-        this.customerID = customerID;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public Double getBalance() {
