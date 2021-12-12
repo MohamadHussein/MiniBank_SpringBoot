@@ -1,8 +1,19 @@
 package com.finance.minibank.model;
 
+import javax.validation.Valid;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class BankTransactionDTO {
+
+    @DecimalMin(value = "1", message = "transaction amount has to be at least 1$")
     private Double amount;
+
+    @NotNull(message = "transactionType field is mandatory: choose DEPOSIT or WITHDRAW")
     private BankTransactionType transactionType;
+
+    @NotNull(message = "account id field is mandatory")
     private Long accountId;
 
     public BankTransactionType getTransactionType() {

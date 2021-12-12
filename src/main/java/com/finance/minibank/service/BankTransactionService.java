@@ -13,11 +13,9 @@ public interface BankTransactionService {
 
     List<BankTransaction> getBankTransactionByAccountId(Long accountId);
 
-    Optional<BankTransaction> getBankTransactionById(Long id);
+    BankTransaction getBankTransactionById(Long id);
 
     BankTransaction saveNewBankTransaction(BankTransactionDTO bankTransactionDTO);
-
-    BankTransaction updateBankTransaction(BankTransaction oldBankTransaction, BankTransactionDTO bankTransactionDTO);
 
 
 }

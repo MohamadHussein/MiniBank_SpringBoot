@@ -1,11 +1,14 @@
 package com.finance.minibank.service;
 
-import com.finance.minibank.model.Account;
-import com.finance.minibank.model.AccountDTO;
+import com.finance.minibank.exception.EntityNotFoundException;
+import com.finance.minibank.exception.NoDataFoundException;
 import com.finance.minibank.model.Customer;
 import com.finance.minibank.model.CustomerDTO;
 import com.finance.minibank.repository.CustomerRepository;
+import com.finance.minibank.utils.DtoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,56 +28,32 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> getAllCustomers()  {
 
         List<Customer> customerList = new ArrayList<>();
-        customerRepository.findAll().forEach(customerList::add);
-        System.out.println(customerList.size());
-        return customerList;
+        for (Customer customer : customerRepository.findAll()) {
+            customerList.add(customer);
+        }
+        if (customerList.size()==0){
+            throw new NoDataFoundException("no customers were found ");
+        } else {
+            return customerList;
+        }
     }
 
     @Override
-    public Optional<Customer> getCustomerById(Long id) {
-        System.out.println( customerRepository.findById(id).get().getTotalBalance());
-        return customerRepository.findById(id);
+    public Customer getCustomerById(Long id) {
+        Optional<Customer> customerOptional = customerRepository.findById(id);
+        if (customerOptional.isPresent()) {
+            return customerOptional.get();
+        } else {
+                throw new EntityNotFoundException(String.format("customer with id %d not found",id));
+        }
     }
 
     @Override
     public Customer saveNewCustomer(CustomerDTO customerDTO) {
-        Customer customer = DTOtoCustomer(customerDTO);
+        Customer customer = DtoUtils.DTOtoCustomer(customerDTO);
         customerRepository.save(customer);
         System.out.println(customer.getId());
         return customerRepository.save(customer);
     }
 
-    @Override
-    public Customer updateCustomer(Customer oldCustomer, CustomerDTO newCustomer) {
-        oldCustomer.setName(newCustomer.getName());
-        oldCustomer.setSurname(newCustomer.getSurname());
-        return customerRepository.save(oldCustomer);
-    }
-
-    @Override
-    public void deleteCustomer(Customer customer) {
-        customerRepository.delete(customer);
-    }
-
-    @Override
-    public Customer addNewAccountToCustomer(Long customerId, AccountDTO accountDTO) {
-        Customer customer = customerRepository.findById(customerId).get();
-
-        customer.addToAccountList(DTOtoAccount(accountDTO));
-        return customerRepository.save(customer);
-    }
-
-    private Customer DTOtoCustomer(CustomerDTO customerDTO) {
-        Customer customer = new Customer();
-        customer.setName(customerDTO.getName());
-        customer.setSurname(customerDTO.getSurname());
-        return customer;
-    }
-
-    private Account DTOtoAccount(AccountDTO accountDTO) {
-        Account account = new Account();
-        account.setBalance(accountDTO.getBalance());
-        account.setCustomer(customerRepository.findById(accountDTO.getCustomerID()).get());
-        return account;
-    }
 }

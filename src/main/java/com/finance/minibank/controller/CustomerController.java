@@ -8,7 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 @RestController
 @RequestMapping("/customers")
@@ -22,42 +23,24 @@ public class CustomerController {
 
     @GetMapping("/")
     public ResponseEntity<?> getAllCustomers() {
-        try {
-            return new ResponseEntity<>(
-                    customerService.getAllCustomers(),
-                    HttpStatus.OK);
+        return new ResponseEntity<>(
+                customerService.getAllCustomers(),
+                HttpStatus.OK);
 
-        } catch (Exception e) {
-            return errResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-
-        }
     }
+
     @PostMapping("/")
-    public ResponseEntity<?> createCustomer(@RequestBody CustomerDTO customerDTO){
-        try {
-            return new ResponseEntity<>(
-        customerService.saveNewCustomer(customerDTO),HttpStatus.CREATED);
-        } catch (Exception e){
-            return errResponse(e.getMessage(),HttpStatus.BAD_REQUEST);
-        }
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getCustomer(@PathVariable Long id){
-        try {
-            Optional<Customer> optCust = customerService.getCustomerById(id);
-            if (optCust.isPresent()) {
-                return new ResponseEntity<>(
-                        optCust.get(),
-                        HttpStatus.OK);
-            } else {
-                return errResponse("customer not found ", HttpStatus.BAD_REQUEST);
-            }
-        } catch (Exception e) {
-            return errResponse(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<?> createCustomer(@RequestBody @Valid CustomerDTO customerDTO) {
+        return new ResponseEntity<>(
+                customerService.saveNewCustomer(customerDTO),
+                HttpStatus.CREATED);
     }
 
-    private ResponseEntity<?> errResponse(String msg, HttpStatus status) {
-        return new ResponseEntity<>("Error Happened: " + msg, status);
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getCustomer( @PathVariable Long id) {
+        Customer customer = customerService.getCustomerById(id);
+        return new ResponseEntity<>(customer,
+                HttpStatus.OK);
     }
+
 }

@@ -12,13 +12,10 @@ public interface CustomerService {
 
     List<Customer> getAllCustomers();
 
-    Optional<Customer> getCustomerById(Long id);
+    Customer getCustomerById(Long id);
 
     Customer saveNewCustomer(CustomerDTO customerDTO);
 
-    Customer updateCustomer(Customer oldCustomer, CustomerDTO newCustomer);
 
-    void deleteCustomer(Customer customer);
 
-    Customer addNewAccountToCustomer(Long customerId, AccountDTO accountDTO);
 }

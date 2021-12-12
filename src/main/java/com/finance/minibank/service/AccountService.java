@@ -10,13 +10,8 @@ public interface AccountService {
 
     List<Account> getAccountsByCustomerId(Long customerId);
 
-    Optional<Account> getAccountById(Long id);
+    Account getAccountById(Long id);
 
     Account saveNewAccount(AccountDTO accountDTO);
 
-    Account updateAccount(Account oldAccount, AccountDTO newAccount);
-
-    void deleteAccount(Account account);
-
-    Account addNewTransactionToAccount(Long accountID, BankTransactionDTO bankTransactionDTO);
 }

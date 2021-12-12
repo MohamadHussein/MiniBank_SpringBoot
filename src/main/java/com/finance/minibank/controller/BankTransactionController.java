@@ -1,8 +1,5 @@
 package com.finance.minibank.controller;
 
-import com.finance.minibank.model.Account;
-import com.finance.minibank.model.AccountDTO;
-import com.finance.minibank.model.BankTransaction;
 import com.finance.minibank.model.BankTransactionDTO;
 import com.finance.minibank.service.BankTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/transactions")
@@ -23,48 +20,28 @@ public class BankTransactionController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<?> getAllBankTransaction(){
-        try {
-             return new ResponseEntity<>(bankTransactionService.getAllBankTransaction(),HttpStatus.OK) ;
-        }catch (Exception e){
-            return errResponse(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<?> getAllBankTransaction() {
+        return new ResponseEntity<>(bankTransactionService.getAllBankTransaction(),
+                HttpStatus.OK);
+
     }
+
     @PostMapping("/")
-    public ResponseEntity<?> createBankTransaction(@RequestBody BankTransactionDTO bankTransactionDTO){
-        try {
-            return new ResponseEntity<>(
-                    bankTransactionService.saveNewBankTransaction(bankTransactionDTO), HttpStatus.CREATED);
-        } catch (Exception e){
-            return errResponse(e.getMessage(),HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<?> createBankTransaction(@RequestBody @Valid BankTransactionDTO bankTransactionDTO) {
+        return new ResponseEntity<>(
+                bankTransactionService.saveNewBankTransaction(bankTransactionDTO), HttpStatus.CREATED);
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> getBankTransaction(@PathVariable Long id){
-        try {
-            Optional<BankTransaction> optionalBankTransaction = bankTransactionService.getBankTransactionById(id);
-            if (optionalBankTransaction.isPresent()) {
-                return new ResponseEntity<>(
-                        optionalBankTransaction.get(),
-                        HttpStatus.OK);
-            } else {
-                return errResponse("Bank Transaction not found ", HttpStatus.BAD_REQUEST);
-            }
-        } catch (Exception e) {
-            return errResponse(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<?> getBankTransaction(@PathVariable Long id) {
+        return new ResponseEntity<>(
+                bankTransactionService.getBankTransactionById(id),
+                HttpStatus.OK);
     }
 
     @GetMapping("/account/{accountId}")
-    public ResponseEntity<?> getByAccountId(@PathVariable Long accountId){
-        try {
-            return new ResponseEntity<>(bankTransactionService.getBankTransactionByAccountId(accountId), HttpStatus.OK);
-        }catch (Exception e){
-            return errResponse(e.getMessage(),HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<?> getByAccountId(@PathVariable Long accountId) {
+        return new ResponseEntity<>(bankTransactionService.getBankTransactionByAccountId(accountId), HttpStatus.OK);
     }
 
-    private ResponseEntity<?> errResponse(String msg, HttpStatus status) {
-        return new ResponseEntity<>("Error Happened: " + msg, status);
-    }
 }
