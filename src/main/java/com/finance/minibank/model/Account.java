@@ -2,6 +2,7 @@ package com.finance.minibank.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.finance.minibank.exception.RejectedTransactionException;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
@@ -16,7 +17,6 @@ public class Account {
     private Long id;
 
 
-    //TODO:: implement a method to aggregate balance from account transactions
     @Column(name = "balance")
     private Double balance=0.0;
 
@@ -55,7 +55,7 @@ public class Account {
 
         } else if (bankTransaction.getTransactionType() == BankTransactionType.WITHDRAW) {
 
-            if(bankTransaction.getAmount() > balance)throw new IllegalArgumentException("no enough balance to withdraw from");
+            if(bankTransaction.getAmount() > balance)throw new RejectedTransactionException("no enough balance to withdraw from");
 
             decreaseBalance(bankTransaction.getAmount());
 

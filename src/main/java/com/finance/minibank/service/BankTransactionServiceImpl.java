@@ -70,6 +70,7 @@ public class BankTransactionServiceImpl implements BankTransactionService {
     @Override
     public BankTransaction saveNewBankTransaction(BankTransactionDTO bankTransactionDTO) {
         BankTransaction bankTransaction = DtoUtils.DTOtoBankTransaction(bankTransactionDTO);
+        bankTransaction.getAccount().addTransactionToAccount(bankTransaction);
         return bankTransactionRepository.save(bankTransaction);
     }
 

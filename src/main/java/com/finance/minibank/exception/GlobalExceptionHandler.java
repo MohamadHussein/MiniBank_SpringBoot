@@ -35,6 +35,15 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(payload, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(value = RejectedTransactionException.class)
+    public ResponseEntity<Object> handleRejectedTransactionException(RejectedTransactionException rejectedTransactionException){
+        ExceptionPayload payload = new ExceptionPayload(
+                rejectedTransactionException.getMessage(),
+                HttpStatus.BAD_REQUEST,
+                ZonedDateTime.now());
+        return new ResponseEntity<>(payload, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex) {
