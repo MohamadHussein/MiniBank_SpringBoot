@@ -30,18 +30,27 @@ public class BankTransaction {
     private Account account;
 
 
-    @NotNull(message = "transactionType field is mandatory: choose DEPOSIT or WITHDRAW")
+    @NotNull(message = "missing field: transactionType, choose DEPOSIT or WITHDRAW")
     @Enumerated(EnumType.STRING)
     private BankTransactionType transactionType;
 
 
-    public BankTransaction(Long id, Double amount, BankTransactionType bankTransactionType) {
-        this.id = id;
+    public BankTransaction( Double amount,BankTransactionType bankTransactionType) {
         this.transactionType =bankTransactionType;
         this.amount = amount;
     }
 
-
+    public BankTransaction(Long id, Double amount,Long accountId,BankTransactionType bankTransactionType) {
+        this.id=id;
+        this.accountId = accountId;
+        this.transactionType =bankTransactionType;
+        this.amount = amount;
+    }
+    public BankTransaction(Long id, Double amount,BankTransactionType bankTransactionType) {
+        this.id=id;
+        this.transactionType =bankTransactionType;
+        this.amount = amount;
+    }
     public BankTransaction() {
     }
 

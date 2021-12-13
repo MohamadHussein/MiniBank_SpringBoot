@@ -28,7 +28,7 @@ public class Customer {
 
 
     @JsonManagedReference
-    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "customer")
+    @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "customer")
     private List<Account> accountList = new ArrayList<>();
 
 
@@ -38,6 +38,10 @@ public class Customer {
         this.surname = surname;
     }
 
+    public Customer( String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
 
     public Customer() {
 
