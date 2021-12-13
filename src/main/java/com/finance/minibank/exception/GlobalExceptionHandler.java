@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
 
 
     @ExceptionHandler(value = EntityNotFoundException.class)
-    public ResponseEntity<Object> handleCustomerNotFound(EntityNotFoundException entityNotFoundException){
+    public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException entityNotFoundException){
         ExceptionPayload payload = new ExceptionPayload(entityNotFoundException.getMessage(),
                 HttpStatus.NOT_FOUND,
                 ZonedDateTime.now());

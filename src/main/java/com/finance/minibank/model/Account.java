@@ -33,16 +33,23 @@ public class Account {
 
 
     @JsonManagedReference
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "account", orphanRemoval = true)
+    @OneToMany(cascade = {CascadeType.MERGE}, mappedBy = "account", orphanRemoval = true)
     private List<BankTransaction> transactionList = new ArrayList<>();
 
-
-    public Account(Long id, Customer customer) {
+    //this constructor is used for unit testing
+    public Account( Long id,Long customerId, Double balance) {
         this.id = id;
-        this.customer = customer;
+        this.customerId = customerId;
+        this.balance = balance;
     }
 
-
+    public Account(Double balance) {
+        this.balance = balance;
+    }
+    public Account(Long id, Double balance) {
+        this.id =id;
+        this.balance = balance;
+    }
     public Account() {
     }
 

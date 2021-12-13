@@ -39,7 +39,9 @@ public class DtoUtils {
 
     public static Account DTOtoAccount(AccountDTO accountDTO) {
         Account account = new Account();
-        account.setCustomer(customerService.getCustomerById(accountDTO.getCustomerID()));
+        if (accountDTO.getCustomerID() != null) {
+            account.setCustomer(customerService.getCustomerById(accountDTO.getCustomerID()));
+        }
         return account;
     }
 

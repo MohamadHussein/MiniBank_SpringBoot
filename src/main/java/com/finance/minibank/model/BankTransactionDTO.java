@@ -10,10 +10,10 @@ public class BankTransactionDTO {
     @DecimalMin(value = "1", message = "transaction amount has to be at least 1$")
     private Double amount;
 
-    @NotNull(message = "transactionType field is mandatory: choose DEPOSIT or WITHDRAW")
+    @NotNull(message = "missing field: transactionType: choose DEPOSIT or WITHDRAW")
     private BankTransactionType transactionType;
 
-    @NotNull(message = "account id field is mandatory")
+    @NotNull(message = "missing field: accountId")
     private Long accountId;
 
     public BankTransactionType getTransactionType() {
