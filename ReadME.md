@@ -10,11 +10,11 @@ You may start by cloning the project up and running it on your local machine for
 
 
 
-
 - [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
 - [Maven ](https://maven.apache.org)
 
 ### Running the application
+
 
 There are several options to run the application:
 
@@ -32,6 +32,10 @@ java -jar target/MiniBank-0.0.1-SNAPSHOT.jar
    3. ```docker build -t mini-bank . ```
    4. ```docker run --rm -it -p 8080:8080```
 
+## Testing the endpoints
+
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/collections/09f32f37e27139f05295)
 
 
 ## Running the tests
