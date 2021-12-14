@@ -10,10 +10,9 @@ You may start by cloning the project up and running it on your local machine for
 
 
 
-```
-- [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-- [Maven 3](https://maven.apache.org)
-```
+- [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
+- [Maven ](https://maven.apache.org)
+
 ### Running the application
 
 There are several options to run the application:
