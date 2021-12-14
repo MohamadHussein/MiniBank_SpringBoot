@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.finance.minibank.exception.RejectedTransactionException;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
 import java.util.ArrayList;
 import java.util.List;
 

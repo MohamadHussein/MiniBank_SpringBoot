@@ -21,7 +21,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<?> getAllCustomers() {
         return new ResponseEntity<>(
                 customerService.getAllCustomers(),
@@ -29,7 +29,7 @@ public class CustomerController {
 
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<?> createCustomer(@RequestBody @Valid CustomerDTO customerDTO) {
         return new ResponseEntity<>(
                 customerService.saveNewCustomer(customerDTO),

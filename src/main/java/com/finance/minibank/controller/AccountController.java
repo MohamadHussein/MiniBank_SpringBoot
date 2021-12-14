@@ -22,7 +22,7 @@ public class AccountController {
     }
 
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<?> getAllAccounts() {
         return new ResponseEntity<>(
                 accountService.getAllAccounts(),
@@ -30,7 +30,7 @@ public class AccountController {
     }
 
 
-    @PostMapping(value = "/")
+    @PostMapping(value = "")
     public ResponseEntity<?> createAccount(@Valid @RequestBody AccountDTO accountDTO) {
         return new ResponseEntity<>(accountService.saveNewAccount(accountDTO),
                 HttpStatus.OK);

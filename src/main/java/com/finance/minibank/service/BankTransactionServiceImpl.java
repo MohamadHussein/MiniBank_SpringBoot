@@ -2,7 +2,6 @@ package com.finance.minibank.service;
 
 import com.finance.minibank.exception.EntityNotFoundException;
 import com.finance.minibank.exception.NoDataFoundException;
-import com.finance.minibank.model.Account;
 import com.finance.minibank.model.BankTransaction;
 import com.finance.minibank.model.BankTransactionDTO;
 import com.finance.minibank.repository.BankTransactionRepository;

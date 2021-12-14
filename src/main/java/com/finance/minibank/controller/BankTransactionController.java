@@ -19,14 +19,14 @@ public class BankTransactionController {
         this.bankTransactionService = bankTransactionService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<?> getAllBankTransaction() {
         return new ResponseEntity<>(bankTransactionService.getAllBankTransaction(),
                 HttpStatus.OK);
 
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<?> createBankTransaction(@RequestBody @Valid BankTransactionDTO bankTransactionDTO) {
         return new ResponseEntity<>(
                 bankTransactionService.saveNewBankTransaction(bankTransactionDTO), HttpStatus.CREATED);

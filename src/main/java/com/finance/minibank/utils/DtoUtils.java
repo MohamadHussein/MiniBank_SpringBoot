@@ -3,7 +3,6 @@ package com.finance.minibank.utils;
 import com.finance.minibank.model.*;
 import com.finance.minibank.service.AccountService;
 import com.finance.minibank.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
