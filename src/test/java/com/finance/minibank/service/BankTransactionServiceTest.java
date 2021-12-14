@@ -2,7 +2,6 @@ package com.finance.minibank.service;
 
 import com.finance.minibank.exception.EntityNotFoundException;
 import com.finance.minibank.exception.NoDataFoundException;
-import com.finance.minibank.model.Account;
 import com.finance.minibank.model.BankTransaction;
 import com.finance.minibank.model.BankTransactionType;
 import com.finance.minibank.repository.BankTransactionRepository;
@@ -10,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

@@ -1,4 +1,4 @@
-# Spring Boot Mini Bank 
+# Spring Boot Mini Bank
 
 A simple web application that mimics a bank, where you can create customers, open accoutns for them and make transactions on these accounts.
 
@@ -8,11 +8,12 @@ You may start by cloning the project up and running it on your local machine for
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
 
-```
-Give examples
-```
+
+
+- [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
+- [Maven ](https://maven.apache.org)
+
 ### Running the application
 
 There are several options to run the application:
@@ -40,7 +41,7 @@ Tests were written using Mockito, SpringTestMVC and Junit.
 
 To run those tests do:
 ```
-mvn test
+mvn clean test
 ```
 
 

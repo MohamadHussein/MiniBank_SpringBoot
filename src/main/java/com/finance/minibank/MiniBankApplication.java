@@ -17,32 +17,32 @@ public class MiniBankApplication {
 
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/accounts").allowedOrigins("*");
-                registry.addMapping("/accounts/**").allowedOrigins("*");
-                registry.addMapping("/accounts").allowedMethods("*");
-
-                registry.addMapping("/transactions").allowedOrigins("*");
-                registry.addMapping("/transactions/**").allowedOrigins("*");
-                registry.addMapping("/transactions").allowedMethods("*");
-
-                registry.addMapping("/customers").allowedOrigins("*");
-                registry.addMapping("/customers/**").allowedOrigins("*");
-                registry.addMapping("/customers").allowedMethods("*");
-            }
-        };
-    }
-    @Configuration
-    @EnableWebMvc
-    public class WebConfig implements WebMvcConfigurer {
-
-        @Override
-        public void configurePathMatch(PathMatchConfigurer configurer) {
-            configurer.setUseTrailingSlashMatch(true);
-            }
-        }
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/accounts").allowedOrigins("*");
+//                registry.addMapping("/accounts/**").allowedOrigins("*");
+//                registry.addMapping("/accounts").allowedMethods("*");
+//
+//                registry.addMapping("/transactions").allowedOrigins("*");
+//                registry.addMapping("/transactions/**").allowedOrigins("*");
+//                registry.addMapping("/transactions").allowedMethods("*");
+//
+//                registry.addMapping("/customers").allowedOrigins("*");
+//                registry.addMapping("/customers/**").allowedOrigins("*");
+//                registry.addMapping("/customers").allowedMethods("*");
+//            }
+//        };
+//    }
+//    @Configuration
+//    @EnableWebMvc
+//    public class WebConfig implements WebMvcConfigurer {
+//
+//        @Override
+//        public void configurePathMatch(PathMatchConfigurer configurer) {
+//            configurer.setUseTrailingSlashMatch(true);
+//            }
+//        }
     }

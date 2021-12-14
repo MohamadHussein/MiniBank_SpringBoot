@@ -4,6 +4,7 @@ package com.finance.minibank.service;
 import com.finance.minibank.exception.EntityNotFoundException;
 import com.finance.minibank.model.Customer;
 import com.finance.minibank.repository.CustomerRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,12 +13,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import org.apache.commons.lang3.StringUtils;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;

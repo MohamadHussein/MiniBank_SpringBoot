@@ -3,7 +3,7 @@ package com.finance.minibank.controller;
 import com.finance.minibank.exception.EntityNotFoundException;
 import com.finance.minibank.model.Customer;
 import com.finance.minibank.service.CustomerService;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

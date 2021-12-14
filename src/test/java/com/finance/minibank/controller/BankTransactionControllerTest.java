@@ -1,11 +1,12 @@
 package com.finance.minibank.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.finance.minibank.model.*;
-import com.finance.minibank.service.AccountService;
+import com.finance.minibank.model.BankTransaction;
+import com.finance.minibank.model.BankTransactionDTO;
+import com.finance.minibank.model.BankTransactionType;
 import com.finance.minibank.service.BankTransactionService;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -17,11 +18,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.Matchers.containsStringIgnoringCase;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.verifyNoInteractions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BankTransactionController.class)
